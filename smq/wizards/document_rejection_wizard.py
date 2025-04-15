@@ -11,9 +11,9 @@ class DocumentRejectionWizard(models.TransientModel):
     def action_confirmer_rejet(self):
         if not self.raison:
             raise UserError("Veuillez indiquer la raison du rejet.")
+        # Action to save the varibles into document_id
         self.documentation_id.write({
             'state': 'rejected',
             'raison_rejet':self.raison,
             'rejected':True,
         })
-        # Tu peux aussi logger, envoyer un message, etc.
